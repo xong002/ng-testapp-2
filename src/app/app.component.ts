@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-testapp-2';
+
+  parentNumber: number = 0;
+
+  parentFn(event: number){
+    this.parentNumber = event;
+  }
 }
