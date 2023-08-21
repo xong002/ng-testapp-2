@@ -1,0 +1,14 @@
+<h1>Inctive Users</h1>
+<br />
+<table>
+  <tr *ngFor="let user of usersArr">
+    <td *ngIf="!user.isActive">
+      {{ user.name }} |
+      <a href="#" (click)="setToActive(user.id)"
+        >Set to
+        <span *ngIf="user.isActive">Inactive</span>
+        <span *ngIf="!user.isActive">Active</span>
+      </a>
+    </td>
+  </tr>
+</table>

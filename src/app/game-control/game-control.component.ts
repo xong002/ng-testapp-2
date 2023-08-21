@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'app-game-control',
@@ -8,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class GameControlComponent {
   nn = 0;
   incrIntervalId!: any;
+  svc = inject(LoggingService);
 
   @Output() gameStart: EventEmitter<number> = new EventEmitter();
 
@@ -18,10 +20,13 @@ export class GameControlComponent {
       console.log("end number: " + this.nn);
       this.gameStart.emit(this.nn);
     }, 1000);
+    this.svc.logMessage('startGame function called')
   }
 
   stopGame() {
     clearInterval(this.incrIntervalId);
+    this.svc.logMessage('stopGame function called')
+
   }
 
 
